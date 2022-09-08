@@ -67,6 +67,11 @@ func (p *UserAgent) detectBrowser(sections []section) {
 					}
 				}
 				switch sections[slen-1].name {
+				// 火狐的WebXRViewer
+				case "WebXRViewer":
+					p.browser.Name = "WebXRViewer"
+					p.browser.Version = sections[slen-1].version
+
 				case "Edge":
 					p.browser.Name = "Edge"
 					p.browser.Version = sections[slen-1].version
@@ -93,6 +98,11 @@ func (p *UserAgent) detectBrowser(sections []section) {
 					case "coc_coc_browser":
 						p.browser.Name = "Coc Coc"
 						p.browser.Version = sections[slen-3].version
+						//微信
+					case "MicroMessenger":
+						p.browser.Name = "MicroMessenger"
+						p.browser.Version = sections[slen-3].version
+
 					default:
 						switch sections[slen-2].name {
 						case "Electron":
